@@ -17,11 +17,20 @@ function simpleEdit(){
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var link = document.getElementById('toggleEdit');
+    var editPageLINK = document.getElementById('toggleEdit');
+    var takeScreenshotLINK = document.getElementById('takeScreenshot');
 
-    link.addEventListener('click', function() {
+    editPageLINK.addEventListener('click', function() {
       chrome.tabs.executeScript({
             code: '(' + simpleEdit + ')();'
          });
+    });
+
+    takeScreenshotLINK.addEventListener('click', function() {
+
+        chrome.tabs.captureVisibleTab(function(screenshotUrl) {
+
+          chrome.tabs.create({url: screenshotUrl});
+        });
     });
 });

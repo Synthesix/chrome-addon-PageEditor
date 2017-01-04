@@ -19,18 +19,21 @@ function simpleEdit(){
 document.addEventListener('DOMContentLoaded', function() {
     var editPageLINK = document.getElementById('toggleEdit');
     var takeScreenshotLINK = document.getElementById('takeScreenshot');
+    var printPageLINK = document.getElementById('printPage');
 
     editPageLINK.addEventListener('click', function() {
       chrome.tabs.executeScript({
-            code: '(' + simpleEdit + ')();'
-         });
+        code: '(' + simpleEdit + ')();'
+      });
     });
 
     takeScreenshotLINK.addEventListener('click', function() {
+      chrome.tabs.captureVisibleTab(function(screenshotUrl) {
+        chrome.tabs.create({url: screenshotUrl});
+      });
+    });
 
-        chrome.tabs.captureVisibleTab(function(screenshotUrl) {
-
-          chrome.tabs.create({url: screenshotUrl});
-        });
+    printPageLINK.addEventListener('click', function() {
+      chrome.tabs.update({url: "javascript:window.print();"});
     });
 });

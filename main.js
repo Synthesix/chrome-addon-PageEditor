@@ -16,12 +16,8 @@ function simpleEdit(){
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var link = document.getElementById('toggleEdit');
-
-    link.addEventListener('click', function() {
+chrome.browserAction.onClicked.addListener(function(tab) {
       chrome.tabs.executeScript({
             code: '(' + simpleEdit + ')();'
-         });
-    });
+      });
 });

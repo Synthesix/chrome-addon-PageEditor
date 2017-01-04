@@ -1,0 +1,15 @@
+body {
+  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+}
+
+#toggleEdit{
+  width:130px;
+  height:40px;
+  background:steelblue;
+  color:white;
+  font-size:2em;
+  text-align:center;
+  line-height:40px;
+  border-radius:5px;
+  cursor:pointer;
+}
